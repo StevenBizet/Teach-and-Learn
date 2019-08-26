@@ -1,0 +1,198 @@
+
+
+/* page d'accueil */
+
+
+.accueil {
+    font-family: 'Oxygen', sans-serif;
+    background-image: url("teach.jpg");
+    background-size : 100%; 
+    background-repeat: no-repeat;
+    
+}
+
+.trait{
+    margin: 15px auto;
+    width: 20%;
+    height: 1px;
+    background-color:black;
+} 
+
+
+
+
+    
+
+/* ------------------------------------------------------------------------------------------------- */
+
+
+
+/* page formulaire */
+
+.formulaire{
+    font-family: 'Oxygen', sans-serif;
+    background-image: url("cours.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#monform{   
+    width:400px; /* A toi de donner la bonne largeur */
+    height:80px; /* A toi de donner la bonne hauteur */
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 5%; 
+    }
+
+
+
+.titreform {
+    text-transform : uppercase;
+    display: inline-box;
+    color: rgb(25, 103, 155);
+    font-size: 1em;
+	margin-bottom: 10px;
+}
+
+fieldset{
+    text-align : justify;
+    padding:0 20px 20px 20px;
+    margin-bottom:5px; /*espace entre les 2 champs de formulaire*/
+    border: none;
+    background-color:gainsboro;
+    font-size: x-large;
+    border-radius: 10px;
+    
+
+}
+
+input{
+    height: 30px;
+    width: 100%;
+    border-radius: 10px;
+    display: inline-block;
+    background-color: beige; 
+   
+}
+
+.number{
+    background: #1abc9c;
+	color: #fff;
+	height: 30px;
+	width: 30px;
+	display: inline-block;
+	font-size: 0.8em;
+	margin-right: 4px;
+	line-height: 30px;
+	text-align: center;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+	border-radius: 15px 15px 15px 0px;
+}
+
+/* titres */
+label{
+    display: inline-block;
+    font-size: 20px;
+}
+
+/* messages d'erreurs */
+.error{
+    color: red;
+    font-size: 15px;
+}
+
+/* checkbox pour les cours */
+.checkboxlabel {
+    display: block;
+    padding-left: 15px;
+    text-indent: -15px;
+    }
+
+.checkbox {
+    width: 13px;
+    height: 13px;
+    padding: 0;
+    margin:0;
+    vertical-align: bottom;
+    position: relative;
+    top: -1px;
+    *overflow: hidden;
+}
+
+/* ------------------------------------------------------------------------------------------------- */
+
+
+
+/* barre de navigation */
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:#1abc9c;
+}
+  
+
+  
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    float: left;
+}
+  
+li a:hover {
+    background-color: #111;
+    cursor: pointer;
+}
+
+.connection {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    float:right;
+    cursor:pointer;
+    background-color:black;
+}
+
+.connection:hover{
+    background-color: #1abc9c;
+}
+
+
+
+
+/* ------------------------------------------------------------------------------------------------- */
+
+
+/* bouton envoyer */
+
+.button{
+    cursor: pointer;
+    border-radius: 20px;
+    background-color: rgb(3, 92, 175);
+    color: white;
+    font-size: 20px;
+    padding: 0px 15px;
+    position: relative;
+}
+
+        
+.button:hover{
+    background-color: rgb(4, 175, 61)
+}
+
+
+
+/* ------------------------------------------------------------------------------------------------- */
+
+
+/* MAJUSCULES */
+.uppercase{
+text-transform: uppercase;
+}
