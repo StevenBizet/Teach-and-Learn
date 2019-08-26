@@ -1,0 +1,149 @@
+<head>
+    <link href="static/style.css" rel="stylesheet" media="all" type="text/css">
+    <script type="text/javascript" src="static/formulaire_best_project.js"></script>
+    <title> Insciption : Teach and Learn</title>
+    
+</head>
+
+<body class=formulaire>
+    
+    <header class=uppercase > <!--rajouter les links pour chaque item -->
+            <span> <a class="navigation" href="#1">Accueil</a> </span>
+            <span> <a class="navigation" href="#2">Elèves</a> </span>
+            <span> <a class="navigation" href="#3">Professeurs</a> </span>
+            <input class="favorite" type="button" value="Connection">
+        </header>
+    </br>
+    </br>
+    
+    <h1> Inscrivez-vous ici !</h1>
+
+    <form id="monform" method="post" action="/valide">
+    <!--quand on clique sur le bouton envoyer (de type submit) le script enverra toutes les donnée à l'URL qu'il faut définir avec une methode HTTP POST-->
+        <p>
+            <fieldset> 
+                <legend align=center><span class="number">1</span>Informations personelles</legend>
+                </br>
+                <label for="nom"> Nom* </label></br>
+                <input type="text" name="nom" id="nom" placeholder="Ex : MARTIN" required/>
+
+                </br>
+                </br>
+                <label for="prenom"> Prénom* </label></br>
+                <input type="text" name="prenom" id="prenom" placeholder="Ex : Jean" required/>
+
+                <br />
+                </br>
+                <label for = "tel" > Téléphone*</label></br>
+                <input type="tel" name="tel" id="tel" placeholder="Ex : 0123456789" required/>
+                <span id="numero_incorrect" style="color:crimson; visibility:hidden;" > le numéro est incorrect </span>
+            <!--dans le style je met 2 argument, 1 pour la couleur et 1 pour l'invisibilité-->
+
+                <br />      
+                </br>          
+                <label for="pseudo"> Pseudo* </label></br>
+                <input type="text" name="pseudo" id="pseudo" placeholder="Ex : Jean-jean" maxlength="10" required/>
+        <!-- permet d'entrer le pseudo avec un exemple (placeholder), une taille max de 10 caractères et un caractère obligatoire (required)-->
+        <!--il est conseillé sur internet de nommer à la foix un id et un name (ici c'est pareil mais dans le cas de liste ca ne l'est pas-->
+
+                </br>
+                <br />
+                <label for="mdp">Mot de passe* </label></br>
+                <input type="password" name="mdp" id="mdp" required/>
+                <span id="password_incorrect" style="color:crimson; visibility:hidden;" > le mot de passe doit contenir une majuscule, une minuscule, un nombre et faire  plus de 8 caractere </span>
+            <!--mot de passe caché (avec min et max de caractère)-->
+
+                <br />
+                </br>
+                <label> Email* </label></br>
+                <input type="email" name="email" id="email" placeholder="Ex : j.martin@exemple.fr" size="30"/>
+                <span id="email_incorrect" style="color:crimson; visibility:hidden;"> l'email est incorrect </span>   
+
+                <br />
+                </br>
+                <label>Date de naissance* </label></br>
+                <input type="date" name="date" id="date"/>
+                <span id="age_incorrect" style="color:crimson; visibility:hidden;"> Pour donner des cours, vous devez avoir entre 18 et 100 ans </span>
+                <p>* champ obligatoire</p>
+            </fieldset>
+
+            <br/>
+            </br>
+
+            <fieldset>
+                <legend align=center><span class="number">2</span>Cochez les cours que vous souhaiteriez donner :</legend>
+
+            </br>
+    <!--pas sur que ce soit la meilleure facon de demander les cours à l'utilisateur mais j'ai pas trouver d'autres options que de faire des checkbox -->
+                <input type="checkbox" name="Mathematique" id="Mathematique" onclick="selection_niveau_maths();"/> <label for="Mathematique">Mathematique</label>
+                <div id="container_maths" style="visibility:hidden"><label for="niveau_maths">Quel est votre niveau ?</label>
+                    <select name="niveau_maths" id="niveau_maths">
+                        <option value="0" selected="selected">Selectioner votre niveau</option>
+                        <option value="L1">L1</option>
+                        <option value="L2">L2</option>
+                        <option value="L3">L3</option>
+                        <option value="M1">M1</option>
+                        <option value="M2">M2</option>
+                        <option value="+M2">plus que M2</option>
+                    </select></div>
+
+    <!--liste des possibilités pour les niveaux, caché par défaut-->
+
+                <input type="checkbox" name="Francais" id="Francais" onclick="selection_niveau_francais();"/> <label for="Francais">Francais</label>
+                <div id="container_francais" style="visibility:hidden"><label for="niveau_francais">Quel est votre niveau ?</label>
+                    <select name="niveau_francais" id="niveau_francais">
+                        <option value="0" selected="selected">Selectioner votre niveau</option>
+                        <option value="L1">L1</option>
+                        <option value="L2">L2</option>
+                        <option value="L3">L3</option>
+                        <option value="M1">M1</option>
+                        <option value="M2">M2</option>
+                        <option value="+M2">plus que M2</option>
+                    </select></div>
+
+                <input type="checkbox" name="Histoire" id="Histoire" onclick="selection_niveau_histoire();" /> <label for="Histoire">Histoire</label>
+                <div id="container_histoire" style="visibility:hidden"><label for="niveau_histoire">Quel est votre niveau ?</label>
+                    <select name="niveau_histoire" id="niveau_histoire">
+                        <option value="0" selected="selected">Selectioner votre niveau</option>
+                        <option value="L1">L1</option>
+                        <option value="L2">L2</option>
+                        <option value="L3">L3</option>
+                        <option value="M1">M1</option>
+                        <option value="M2">M2</option>
+                        <option value="+M2">plus que M2</option>
+                    </select></div>
+
+                <input type="checkbox" name="Chimie" id="Chimie" onclick="selection_niveau_chimie();"/> <label for="Chimie">Chimie</label>
+                <div id="container_chimie" style="visibility:hidden"><label for="niveau_chimie">Quel est votre niveau ?</label>
+                    <select name="niveau_chimie" id="niveau_chimie">
+                        <option value="0" selected="selected">Selectioner votre niveau</option>
+                        <option value="L1">L1</option>
+                        <option value="L2">L2</option>
+                        <option value="L3">L3</option>
+                        <option value="M1">M1</option>
+                        <option value="M2">M2</option>
+                        <option value="+M2">plus que M2</option>
+                    </select></div>
+            </fieldset>
+<!--il doit y avoir un moyen de faire un template pour ne pas avoir à répéter les liste déroulantes-->
+            </br>
+
+            <fieldset>
+            <legend align=center> Description </legend></br>
+            <TEXTAREA name="presentation" id="presentation" rows=4 cols=40 placeholder= "Présentez vous en quelques lignes !"></TEXTAREA>
+            </fieldset>
+
+
+
+<!--le bouton accepter les conditions permet aussi de checker la validité du formulaire-->
+            <br>
+            <input type="checkbox" name="verification" id="verification" onclick="verif_formulaire();"/> 
+            <label for="verification">J'accepte les conditions d'utilisations</label><br /></br>
+            <input type="submit" class="button" name= "bouton_d_envoie" id="bouton_d_envoie" value="Envoyer" value="Disabled" disabled/>
+        </br>
+        </p>
+    </form>
+</body>
+
+
+<!--ATTENTION les texte d'erreur sont générer automatiquement et sont donc en anglais (rip moi)-->
