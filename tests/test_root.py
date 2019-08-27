@@ -13,8 +13,8 @@ def test_root_path2():
     
 # On veut tester qu'on peut bien cliquer sur Accueil:
 
-def test_button_ok():
-    reponse = client.get('/', data=None
+#def test_button_ok():
+#    reponse = client.get('/', data=None
 
 def test_app(client):
     assert client.get(url_for('/page_accueil.html')).status_code == 200
