@@ -1,0 +1,48 @@
+# vim: set ts=2 sw=2 et:
+
+version: "3.4"
+
+# __________________________ SERVICES ________________________
+
+services:
+
+# --------- POSTGRES ----------
+  postgres:
+    image: postgres:latest
+    restart : "no"
+    environment:
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - backend
+
+# ----------- PROJET ----------
+
+  flask:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.flask
+    networks:
+      - backend
+ 
+# ----------- HAPROXY ------------
+
+  haproxy:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.haproxy
+    image: haproxy
+    networks:
+      - backend
+
+# __________________________ NETWORKS _________________________
+
+networks:
+  backend:
+
+# ___________________________ VOLUMES __________________________
+
+volumes:
+  postgres_data:
+

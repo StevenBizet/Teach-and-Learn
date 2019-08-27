@@ -1,0 +1,28 @@
+FROM debian:10
+
+## ________________ PARTIE SYSTEME ___________________
+
+
+## (moins susceptible de changer)
+
+
+# --------- NOS INSTALLATIONS ----------------
+RUN apt-get update \
+    && apt-get install -y python \
+    && apt-get install -y python python-pip \
+    && pip install flask
+
+
+## ________________ PARTIE PROJET ______________________
+
+
+# On lance notre app.py
+RUN python app.py
+
+
+# On indique aux différents outils que le port à ouvrir est 80
+EXPOSE 80
+
+CMD bash \
+    && while true ; do sleep 1 ; done
+
