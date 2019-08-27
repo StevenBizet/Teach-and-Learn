@@ -10,14 +10,14 @@ FROM debian:10
 RUN apt-get update \
     && apt-get install -y python \
     && apt-get install -y python python-pip \
-    && pip install flask
+    && pip install Flask
 
 
 ## ________________ PARTIE PROJET ______________________
 
 
 # On lance notre app.py
-RUN python app.py
+RUN python __init__.py
 
 
 # On indique aux différents outils que le port à ouvrir est 80
