@@ -8,7 +8,11 @@ def test_root_path2():
     b = 1
     assert a == b
 
-def test_root_path3():
-    response = client.get('/', data=None, headers=None)
+#def test_root_path3():
+#    response = client.get('/', data=None, headers=None)
+    
+# On veut tester qu'on peut bien cliquer sur Accueil:
 
+def test_button_ok():
+    reponse = client.get('/', data=None
 
