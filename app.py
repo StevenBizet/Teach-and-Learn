@@ -71,10 +71,10 @@ def login():
                     return redirect('/')
                 else:
                     print("mdp incorrect")
-                    return redirect('/login.html')
+                    return redirect('/connexion.html')
             else:
                 print("pseudo incorrect")
-                return redirect('/login.html')
+                return redirect('/connexion.html')
 
 @app.route("/mon_profil")
 def mon_profil_co():
@@ -109,4 +109,4 @@ def inscription():
     return redirect('/page_accueil.html')
     
 
-app.run()
+app.run('127.0.0.1')
