@@ -1,4 +1,4 @@
-FROM debian:10
+FROM python:3.7-buster
 
 ## ________________ PARTIE SYSTEME ___________________
 
@@ -7,23 +7,26 @@ FROM debian:10
 
 
 # --------- NOS INSTALLATIONS ----------------
-RUN apt-get update \
-    && apt-get install -y python \
-    && apt-get install -y python python-pip \
-    && pip install Flask
 
+RUN pip3 install pipenv
 
 ## ________________ PARTIE PROJET ______________________
 
 
 # On lance notre app.py
-RUN alias python=python3
-RUN python server.py
 
+# On injecte NOTRE code dans le container (dans /app)
+COPY . /app
+
+# On demande au container de se mettre dans le dossier /app
+# Pour la suite des étapes (RUN et CMD)
+WORKDIR /app
+
+RUN pipenv install
 
 # On indique aux différents outils que le port à ouvrir est 80
 EXPOSE 80
 
-CMD bash \
-    && while true ; do sleep 1 ; done
+CMD pipenv run python3 server.py
+
 

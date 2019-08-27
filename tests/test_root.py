@@ -1,12 +1,12 @@
-def test_root_path():
-    a = 1
-    b = 0
-    assert a == b
+#def test_root_path():
+#    a = 1
+#    b = 0
+#    assert a == b
 
-def test_root_path2():
-    a = 1
-    b = 1
-    assert a == b
+#def test_root_path2():
+#    a = 1
+#    b = 1
+#    assert a == b
 
 #def test_root_path3():
 #    response = client.get('/', data=None, headers=None)
@@ -17,5 +17,5 @@ def test_root_path2():
 #    reponse = client.get('/', data=None
 
 def test_app(client):
-    assert client.get(url_for('/page_accueil.html')).status_code == 200
+    assert client.get('/').status_code == 302
 
