@@ -17,7 +17,8 @@ RUN apt-get update \
 
 
 # On lance notre app.py
-RUN python __init__.py
+RUN alias python=python3
+RUN python server.py
 
 
 # On indique aux différents outils que le port à ouvrir est 80
