@@ -2,7 +2,7 @@ import pytest
 import sys
 
 sys.path.append('.')
-from server import create_app # <<==== A CHANGER
+from __init__ import create_app # <<==== A CHANGER
 
 @pytest.fixture
 def app():

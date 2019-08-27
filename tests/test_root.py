@@ -16,3 +16,6 @@ def test_root_path2():
 def test_button_ok():
     reponse = client.get('/', data=None
 
+def test_app(client):
+    assert client.get(url_for('/page_accueil.html')).status_code == 200
+
