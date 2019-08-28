@@ -53,31 +53,35 @@ def create_app():
     def home():
         return redirect('/page_accueil.html')
 
-    @app.route("/login", methods=["POST"])
+    @app.route("/login")
     def login():
         if 'connexion_ok' in session:
             session.pop("connexion_ok", None)
             flash("Vous êtes déconecté")
-            return redirect('/page_accueil')
+            return redirect('/')
         else:
-            C.execute("""SELECT idUser, User_pseudo, User_password FROM User""")
-            pseudo = request.form["pseudo"]
-            mdp = request.form["mdp"]
-            print("test")
-            for row in C:
-                if row[1] == pseudo:
-                    if row[2] == mdp:
-                        id_user = row[0]
-                        session['connexion_ok'] = id_user
-                        print("vous etes connecté")  #faire un pop up avec "vous etes connecté"
-                        print(id_user)
-                        return redirect('/')
-                    else:
-                        print("mdp incorrect")
-                        return redirect('/connexion.html')
+            return redirect('/connexion.html')
+
+    @app.route("/verif_co", methods=["POST"])
+    def verif_co():
+        C.execute("""SELECT idUser, User_pseudo, User_password FROM User""")
+        pseudo = request.form["pseudo"]
+        mdp = request.form["mdp"]
+        print("test")
+        for row in C:
+            if row[1] == pseudo:
+                if row[2] == mdp:
+                    id_user = row[0]
+                    session['connexion_ok'] = id_user
+                    print("vous etes connecté")  #faire un pop up avec "vous etes connecté"
+                    print(id_user)
+                    return redirect('/')
                 else:
-                    print("pseudo incorrect")
+                    print("mdp incorrect")
                     return redirect('/connexion.html')
+            else:
+                print("pseudo incorrect")
+                return redirect('/connexion.html')
 
     @app.route("/mon_profil")
     def mon_profil_co():
