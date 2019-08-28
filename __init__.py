@@ -5,10 +5,10 @@
 from flask import Flask, request, redirect, render_template, session, flash, url_for
 import sqlite3
 
-conn = sqlite3.connect('best_project.db', check_same_thread=False) #pabien
-c = conn.cursor()
+CONN = sqlite3.connect('best_project.db', check_same_thread=False) #pabien
+C = CONN.cursor()
 # pas de date de naissance dans la base de donnée
-c.execute("""
+C.execute("""
     CREATE TABLE IF NOT EXISTS User (
         idUser INTEGER PRIMARY KEY AUTOINCREMENT, 
         User_name VARCHAR(45) NOT NULL, 
@@ -19,7 +19,7 @@ c.execute("""
         User_phone VARCHAR(20) NULL)
     """)
 
-c.execute("""
+C.execute("""
     CREATE TABLE IF NOT EXISTS Location (
         idLocation INTEGER PRIMARY KEY AUTOINCREMENT,
         city VARCHAR(45) NOT NULL,
