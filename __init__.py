@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 
+"""Mon docstring"""
+
 from flask import Flask, request, redirect, render_template, session, flash, url_for
 import sqlite3
 
 conn = sqlite3.connect('best_project.db', check_same_thread=False) #pabien
 c = conn.cursor()
 # pas de date de naissance dans la base de donnée
-c.execute(""" 
+c.execute("""
     CREATE TABLE IF NOT EXISTS User (
         idUser INTEGER PRIMARY KEY AUTOINCREMENT, 
         User_name VARCHAR(45) NOT NULL, 
@@ -16,8 +18,8 @@ c.execute("""
         User_email VARCHAR(20) NULL, 
         User_phone VARCHAR(20) NULL)
     """)
-    
-c.execute(""" 
+
+c.execute("""
     CREATE TABLE IF NOT EXISTS Location (
         idLocation INTEGER PRIMARY KEY AUTOINCREMENT,
         city VARCHAR(45) NOT NULL,
@@ -32,7 +34,7 @@ c.execute("""
 #            FOREIGN KEY (`idUser`)
 #            REFERENCES `best_project`.`User` (`idUser`)
 #    )
-            
+
 #    CREATE TABLE IF NOT EXISTS `best_project`.`Cours` (
 #        `idCours` INT NOT NULL AUTO_INCREMENT,
 #        `IndiceCours` VARCHAR(2) NOT NULL,
@@ -43,7 +45,7 @@ c.execute("""
 
 
 def create_app():
-
+    """ On créer notre fonction pour l'appeler dans server.py"""
     app = Flask(__name__, static_folder="public", static_url_path="")
     app.secret_key = b'best_project'
 
@@ -60,7 +62,7 @@ def create_app():
             return redirect('/page_accueil')
         else:
             c.execute("""SELECT idUser, User_pseudo, User_password FROM User""")
-            pseudo =request.form["pseudo"]
+            pseudo = request.form["pseudo"]
             mdp = request.form["mdp"]
             print("test")
             for row in c:
@@ -104,12 +106,16 @@ def create_app():
         email = request.form["email"]
         date = request.form["date"]
 
-        c.execute("INSERT INTO User (User_name, User_surname, User_pseudo, User_password, User_email, User_phone) VALUES (?, ?, ?, ?, ?, ?)", (nom, prenom, pseudo, mdp, email, tel))
+        c.execute("INSERT INTO User \
+                (User_name, User_surname, User_pseudo, User_password, User_email, User_phone) \
+                VALUES (?, ?, ?, ?, ?, ?)", (nom, prenom, pseudo, mdp, email, tel))
         conn.commit()
 
-        flash("Vous etes {} {} (alias {}), votre mot de passe est {}, votre mail est {} et votre numéro de téléphone est {}".format(prenom, nom, pseudo, mdp, email, tel))
+        flash("Vous etes {} {} (alias {}), votre mot de passe est {}, \
+                votre mail est {} et votre numéro de téléphone est {}"\
+                .format(prenom, nom, pseudo, mdp, email, tel))
         return redirect('/page_accueil.html')
-        
+
     return app
 
 #app.run('127.0.0.1')
