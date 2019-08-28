@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 
 """Mon docstring"""
-
-from flask import Flask, request, redirect, render_template, session, flash, url_for
 import sqlite3
+from flask import Flask, request, redirect, render_template, session, flash, url_for
 
 CONN = sqlite3.connect('best_project.db', check_same_thread=False) #pabien
 C = CONN.cursor()
@@ -61,11 +60,11 @@ def create_app():
             flash("Vous êtes déconecté")
             return redirect('/page_accueil')
         else:
-            c.execute("""SELECT idUser, User_pseudo, User_password FROM User""")
+            C.execute("""SELECT idUser, User_pseudo, User_password FROM User""")
             pseudo = request.form["pseudo"]
             mdp = request.form["mdp"]
             print("test")
-            for row in c:
+            for row in C:
                 if row[1] == pseudo:
                     if row[2] == mdp:
                         id_user = row[0]
@@ -104,12 +103,12 @@ def create_app():
         pseudo = request.form["pseudo"]
         mdp = request.form["mdp"]
         email = request.form["email"]
-        date = request.form["date"]
+#        date = request.form["date"]
 
-        c.execute("INSERT INTO User \
+        C.execute("INSERT INTO User \
                 (User_name, User_surname, User_pseudo, User_password, User_email, User_phone) \
                 VALUES (?, ?, ?, ?, ?, ?)", (nom, prenom, pseudo, mdp, email, tel))
-        conn.commit()
+        CONN.commit()
 
         flash("Vous etes {} {} (alias {}), votre mot de passe est {}, \
                 votre mail est {} et votre numéro de téléphone est {}"\
