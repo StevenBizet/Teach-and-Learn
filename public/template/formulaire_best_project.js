@@ -40,8 +40,7 @@ function pop_up() {
 	pseudo = document.getElementById("pseudo").value
 	tel = document.getElementById("tel").value
 	email = document.getElementById("email").value
-	alert('Vous êtes ' + nom + ' ' + prenom + ' (alias ' + pseudo + \
-		') vous êtes joignable au ' + tel + ' ou via ' + email)
+	alert('Vous êtes ' + nom + ' ' + prenom + ' (alias ' + pseudo +	') vous êtes joignable au ' + tel + ' ou via ' + email)
 
 function verif_formulaire() {
 
