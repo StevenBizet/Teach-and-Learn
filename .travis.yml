@@ -17,13 +17,7 @@ deploy:
     script: make deliver
     skip_cleanup: true
     on:
-      branch: develop
-  - provider: script 
-    script: pipenv run pytest
-    skip_cleanup: true
-    on:
-      all_branches: true
-    
+      branch: develop    
       
-#script:
-#  - pipenv run pytest
+script:
+  - pipenv run pytest
