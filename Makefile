@@ -4,7 +4,7 @@ IMAGE:="teach_and_learn"
 TAG:=$(shell TZ=UTC date +"%Y%m%d")
 
 
-all: build run
+all: build test deliver
 
 build:
 	# docker-compose build
@@ -15,11 +15,12 @@ run: build
 	#docker-compose up --build
 	docker run -it $(USERNAME)/$(IMAGE):$(TAG)
 
-test: build
+test: 
 	docker run -it $(USERNAME)/$(IMAGE):$(TAG) pipenv run pytest
 
-deliver: test
+deliver:
 	docker tag $(USERNAME)/$(IMAGE):$(TAG) $(USERNAME)/$(IMAGE):latest
+	echo "$(DOCKER_PASSWORD)" | docker login -u "$(DOCKER_USERNAME)" --password-stdin
 	docker push $(USERNAME)/$(IMAGE):latest
 
 
