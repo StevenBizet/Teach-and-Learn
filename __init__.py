@@ -10,22 +10,16 @@ C = CONN.cursor()
 C.execute("""
     CREATE TABLE IF NOT EXISTS User (
         idUser INTEGER PRIMARY KEY AUTOINCREMENT, 
-        User_name VARCHAR(45) NOT NULL, 
-        User_surname VARCHAR(45) NOT NULL, 
-        User_pseudo VARCHAR(45) NOT NULL, 
+        User_name VARCHAR(20) NOT NULL, 
+        User_surname VARCHAR(20) NOT NULL, 
+        User_pseudo VARCHAR(20) NOT NULL, 
         User_password VARCHAR(20) NOT NULL, 
-        User_email VARCHAR(20) NULL, 
-        User_phone VARCHAR(20) NULL)
-    """)
-
-C.execute("""
-    CREATE TABLE IF NOT EXISTS Location (
-        idLocation INTEGER PRIMARY KEY AUTOINCREMENT,
-        city VARCHAR(45) NOT NULL,
-        adress VARCHAR(45) NOT NULL,
-        idUser INT NOT NULL,
-        FOREIGN KEY (idUser) 
-        REFERENCES User (idUser))
+        User_email VARCHAR(20) NOT NULL, 
+        User_phone VARCHAR(20) NOT NULL,
+        Maths VARCHAR(5) NOT NULL,
+        Francais VARCHAR(5) NOT NULL,
+        Histoire VARCHAR(5) NOT NULL,
+        Chimie VARCHAR(5) NOT NULL)
     """)
 
 #        INDEX `idUser_idx` (`idUser` ASC) VISIBLE,
@@ -61,6 +55,7 @@ def create_app():
             return redirect('/')
         else:
             return redirect('/connexion.html')
+
 
     @app.route("/verif_co", methods=["POST"])
     def verif_co():
@@ -108,15 +103,18 @@ def create_app():
         mdp = request.form["mdp"]
         email = request.form["email"]
 #        date = request.form["date"]
+        math = request.form["niveau_maths"]
+        francais = request.form["niveau_francais"]
+        histoire = request.form["niveau_histoire"]
+        chimie = request.form["niveau_chimie"]
 
         C.execute("INSERT INTO User \
-                (User_name, User_surname, User_pseudo, User_password, User_email, User_phone) \
-                VALUES (?, ?, ?, ?, ?, ?)", (nom, prenom, pseudo, mdp, email, tel))
+                (User_name, User_surname, User_pseudo, User_password, User_email, User_phone, Maths, \
+                Francais, Histoire, Chimie) \
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", \
+                (nom, prenom, pseudo, mdp, email, tel, math, francais, histoire, chimie))
         CONN.commit()
 
-        flash("Vous etes {} {} (alias {}), votre mot de passe est {}, \
-                votre mail est {} et votre numéro de téléphone est {}"\
-                .format(prenom, nom, pseudo, mdp, email, tel))
         return redirect('/page_accueil.html')
 
     return app
