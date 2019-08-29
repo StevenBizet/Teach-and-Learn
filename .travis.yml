@@ -12,14 +12,13 @@ services:
     #  - pip install pipenv
     #  - pipenv install
 
-    #deploy:
-    #  - provider: script
-    #    script: make deliver
-    #    skip_cleanup: true
-    #    on:
-    #      branch: master    
+deploy:
+  - provider: script
+    script: make deliver
+    skip_cleanup: true
+    on:
+      branch: master    
       
 script:
   - make build
   - make test
-  - make deliver
