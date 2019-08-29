@@ -13,17 +13,17 @@ install:
   - pipenv install
 
 deploy:
-  provider: script
-  script: make deliver
-  skip_cleanup: true
-  on:
-    branch: develop
-
-  provider: 
-  script: pipenv run pytest
-  skip_cleanup: true
-  on:
-    all_branches: true
+  - provider: script
+    script: make deliver
+    skip_cleanup: true
+    on:
+      branch: develop
+  - provider: script 
+    script: pipenv run pytest
+    skip_cleanup: true
+    on:
+      all_branches: true
     
-    #script:
-        #  - pipenv run pytest
+      
+#script:
+#  - pipenv run pytest
