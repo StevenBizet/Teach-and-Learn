@@ -1,4 +1,8 @@
 language: python
+
+services:
+  - docker
+
 python:
   - "3.5"
   - "3.6"
@@ -8,5 +12,18 @@ install:
   - pip install pipenv
   - pipenv install
 
-script:
-  - pipenv run pytest
+deploy:
+  provider: script
+  script: make deliver
+  skip_cleanup: true
+  on:
+    branch: develop
+
+  provider: 
+  script: pipenv run pytest
+  skip_cleanup: true
+  on:
+    all_branches: true
+    
+    #script:
+        #  - pipenv run pytest
