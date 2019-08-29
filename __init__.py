@@ -16,10 +16,10 @@ C.execute("""
         User_password VARCHAR(20) NOT NULL, 
         User_email VARCHAR(20) NOT NULL, 
         User_phone VARCHAR(20) NOT NULL,
-        Maths VARCHAR(5) DEFAULT '0',
-        Francais VARCHAR(5) DEFAULT '0',
-        Histoire VARCHAR(5) DEFAULT '0',
-        Chimie VARCHAR(5) DEFAULT '0')
+        Maths VARCHAR(5) DEFAULT 0,
+        Francais VARCHAR(5) DEFAULT 0,
+        Histoire VARCHAR(5) DEFAULT 0,
+        Chimie VARCHAR(5) DEFAULT 0)
     """)
 
 #        INDEX `idUser_idx` (`idUser` ASC) VISIBLE,
