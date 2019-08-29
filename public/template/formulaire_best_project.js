@@ -34,6 +34,15 @@ function selection_niveau_chimie() {
     }
 }
 
+function pop_up() {
+	nom = document.getElementById("nom").value
+	prenom = document.getElementById("prenom").value
+	pseudo = document.getElementById("pseudo").value
+	tel = document.getElementById("tel").value
+	email = document.getElementById("email").value
+	alert('Vous êtes ' + nom + ' ' + prenom + ' (alias ' + pseudo + \
+		') vous êtes joignable au ' + tel + ' ou via ' + email)
+
 function verif_formulaire() {
 
     //si il y a une erreur on ne déverouille pas le bouton d'envoie
