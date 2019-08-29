@@ -10,22 +10,16 @@ C = CONN.cursor()
 C.execute("""
     CREATE TABLE IF NOT EXISTS User (
         idUser INTEGER PRIMARY KEY AUTOINCREMENT, 
-        User_name VARCHAR(45) NOT NULL, 
-        User_surname VARCHAR(45) NOT NULL, 
-        User_pseudo VARCHAR(45) NOT NULL, 
+        User_name VARCHAR(20) NOT NULL, 
+        User_surname VARCHAR(20) NOT NULL, 
+        User_pseudo VARCHAR(20) NOT NULL, 
         User_password VARCHAR(20) NOT NULL, 
-        User_email VARCHAR(20) NULL, 
-        User_phone VARCHAR(20) NULL)
-    """)
-
-C.execute("""
-    CREATE TABLE IF NOT EXISTS Location (
-        idLocation INTEGER PRIMARY KEY AUTOINCREMENT,
-        city VARCHAR(45) NOT NULL,
-        adress VARCHAR(45) NOT NULL,
-        idUser INT NOT NULL,
-        FOREIGN KEY (idUser) 
-        REFERENCES User (idUser))
+        User_email VARCHAR(20) NOT NULL, 
+        User_phone VARCHAR(20) NOT NULL,
+        Maths INTEGER DEFAULT '0',
+        Francais INTEGER DEFAULT '0',
+        Histoire INTEGER DEFAULT '0',
+        Chimie INTEGER DEFAULT '0')
     """)
 
 #        INDEX `idUser_idx` (`idUser` ASC) VISIBLE,
@@ -108,10 +102,16 @@ def create_app():
         mdp = request.form["mdp"]
         email = request.form["email"]
 #        date = request.form["date"]
+        math = request.form["niveau_maths"]
+        francais = request.form["niveau_francais"]
+        histoire = request.form["niveau_histoire"]
+        chimie = request.form["niveau_chimie"]
 
         C.execute("INSERT INTO User \
-                (User_name, User_surname, User_pseudo, User_password, User_email, User_phone) \
-                VALUES (?, ?, ?, ?, ?, ?)", (nom, prenom, pseudo, mdp, email, tel))
+                (User_name, User_surname, User_pseudo, User_password, User_email, User_phone, Maths, \
+                Francais, Histoire, Chimie) \
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", \
+                (nom, prenom, pseudo, mdp, email, tel, math, francais, histoire, chimie))
         CONN.commit()
 
         flash("Vous etes {} {} (alias {}), votre mot de passe est {}, \
