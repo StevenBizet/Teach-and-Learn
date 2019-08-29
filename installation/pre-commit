@@ -1,0 +1,60 @@
+#!/usr/bin/env pipenv-shebang
+
+# ... ça nécessite un : sudo pip3 install pipenv-shebang
+
+import subprocess
+import os.path
+import os
+import sys
+
+
+def run(cmd):
+    """A function to run a command and get stdout"""
+    result = subprocess.run(
+        cmd,
+        shell=True,
+        stdout=subprocess.PIPE)
+    return result.stdout.strip().decode('utf-8')
+
+def is_python_file(name):
+    """Tells if the file is a .py file"""
+    return name[-3:] == '.py'
+
+def get_staged_files():
+    """Récupérer la liste des fichiers en cours de traitement"""
+    cmd = "git diff --staged --name-only"
+    return run(cmd).split()
+
+def get_branch():
+    """Récupérer la branche"""
+    cmd = "git branch | grep '\\*' | cut -d ' ' -f2"
+    return run(cmd)
+
+def check_commit():
+    """Main function to check commit content"""
+    branch = get_branch()
+    files = get_staged_files()
+
+    # Pour chaque fichier on vérifie
+    print("Vous êtes sur la branche {0}".format(branch))
+    for filename in files:
+        # Passer au suivant si ce nest pas du python
+        if not is_python_file(filename):
+            print("Skipping {}: not a python file".format(filename))
+            continue
+        # Passer au suivant si le fichier n'existe pas
+        if not os.path.exists(filename):
+            print("Skipping {}: file deleted".format(filename))
+            continue
+
+        cmd = "pipenv run pylint {0}".format(filename)
+        res = os.system(cmd)
+        if not res == 0:
+            print("\x1b[31;1mAttention votre commit a été refusé\x1b[0m")
+            sys.exit(1)
+
+# Entry point
+if __name__ == "__main__":
+    check_commit()
+
+
