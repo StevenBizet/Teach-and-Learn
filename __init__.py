@@ -16,10 +16,10 @@ C.execute("""
         User_password VARCHAR(20) NOT NULL, 
         User_email VARCHAR(20) NOT NULL, 
         User_phone VARCHAR(20) NOT NULL,
-        Maths VARCHAR(5) DEFAULT 0,
-        Francais VARCHAR(5) DEFAULT 0,
-        Histoire VARCHAR(5) DEFAULT 0,
-        Chimie VARCHAR(5) DEFAULT 0)
+        Maths VARCHAR(5) NOT NULL,
+        Francais VARCHAR(5) NOT NULL,
+        Histoire VARCHAR(5) NOT NULL,
+        Chimie VARCHAR(5) NOT NULL)
     """)
 
 #        INDEX `idUser_idx` (`idUser` ASC) VISIBLE,
@@ -56,7 +56,8 @@ def create_app():
         else:
             return redirect('/connexion.html')
 
-    @app.route("/verif_co", methods=["POST"])
+
+@app.route("/verif_co", methods=["POST"])
     def verif_co():
         C.execute("""SELECT idUser, User_pseudo, User_password FROM User""")
         pseudo = request.form["pseudo"]
