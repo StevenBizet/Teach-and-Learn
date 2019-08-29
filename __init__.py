@@ -114,9 +114,6 @@ def create_app():
                 (nom, prenom, pseudo, mdp, email, tel, math, francais, histoire, chimie))
         CONN.commit()
 
-        flash("Vous etes {} {} (alias {}), votre mot de passe est {}, \
-                votre mail est {} et votre numéro de téléphone est {}"\
-                .format(prenom, nom, pseudo, mdp, email, tel))
         return redirect('/page_accueil.html')
 
     return app
