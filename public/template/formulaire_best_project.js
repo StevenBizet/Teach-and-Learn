@@ -1,4 +1,4 @@
-function date_default(){document.getElementById('date').valueAsDate = new Date();}
+function date_default() {document.getElementById('date').valueAsDate = new Date();}
 
 function selection_niveau_maths(){
     if (document.getElementById("Mathematique").checked == true){
@@ -32,6 +32,15 @@ function selection_niveau_chimie() {
     } else{
         document.getElementById("container_chimie").style.visibility="hidden";
     }
+}
+
+function pop_up() {
+	nom = document.getElementById("nom").value
+	prenom = document.getElementById("prenom").value
+	pseudo = document.getElementById("pseudo").value
+	tel = document.getElementById("tel").value
+	email = document.getElementById("email").value
+	alert('Vous êtes ' + nom + ' ' + prenom + ' (alias ' + pseudo +	') vous êtes joignable au ' + tel + ' ou via ' + email);
 }
 
 function verif_formulaire() {
