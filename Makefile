@@ -20,6 +20,7 @@ test:
 
 deliver:
 	docker tag $(USERNAME)/$(IMAGE):$(TAG) $(USERNAME)/$(IMAGE):latest
+	echo "$(DOCKER_PASSWORD)" | docker login -u "$(DOCKER_USERNAME)" --password-stdin
 	docker push $(USERNAME)/$(IMAGE):latest
 
 
