@@ -107,40 +107,40 @@ def create_app():
             return redirect("/connexion.html")
 
     @app.route("/cours_maths", methods=["GET"])
-        def cours_maths():
-            if 'connexion_ok' in session:
-                rows = C.execute("SELECT * FROM User")
-                nv = C.execute("SELECT Maths FROM User")
-                if nv>0:
-                    resultats = render_template('/cours_maths.html', cours_maths=rows)
-                return resultats
+    def cours_maths():
+        if 'connexion_ok' in session:
+            rows = C.execute("SELECT * FROM User")
+            nv = C.execute("SELECT Maths FROM User")
+            if nv>0:
+                resultats = render_template('/cours_maths.html', cours_maths=rows)
+            return resultats
 
-            else:
-                return redirect("/connexion.html")
+        else:
+            return redirect("/connexion.html")
 
     @app.route("/cours_histoire", methods=["GET"])
-        def cours_histoire():
-            if 'connexion_ok' in session:
-                rows = C.execute("SELECT * FROM User")
-                nv = C.execute("SELECT Histoire FROM User")
-                if nv>0:
-                    resultats = render_template('/cours_histoire.html', cours_histoire=rows)
-                return resultats
+    def cours_histoire():
+        if 'connexion_ok' in session:
+            rows = C.execute("SELECT * FROM User")
+            nv = C.execute("SELECT Histoire FROM User")
+            if nv>0:
+                resultats = render_template('/cours_histoire.html', cours_histoire=rows)
+            return resultats
 
-            else:
-                return redirect("/connexion.html")
+        else:
+            return redirect("/connexion.html")
 
     @app.route("/cours_chimie", methods=["GET"])
-        def cours_francais():
-            if 'connexion_ok' in session:
-                rows = C.execute("SELECT * FROM User")
-                nv = C.execute("SELECT Chimie FROM User")
-                if nv>0:
-                    resultats = render_template('/cours_chimie.html', cours_chimie=rows)
-                return resultats
+    def cours_francais():
+        if 'connexion_ok' in session:
+            rows = C.execute("SELECT * FROM User")
+            nv = C.execute("SELECT Chimie FROM User")
+            if nv>0:
+                resultats = render_template('/cours_chimie.html', cours_chimie=rows)
+            return resultats
 
-            else:
-                return redirect("/connexion.html")
+        else:
+            return redirect("/connexion.html")
 
     @app.route("/inscription", methods=["POST"])
     def inscription():
