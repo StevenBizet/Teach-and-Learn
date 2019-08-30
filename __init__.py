@@ -97,8 +97,8 @@ def create_app():
     @app.route("/cours_francais", methods=["GET"])
     def cours_francais():
         if 'connexion_ok' in session:
-            row = C.execute("SELECT * FROM User")
-            resultats_francais = render_template('/cours_francais.html', result=row)
+            rows = C.execute("SELECT * FROM User")
+            resultats_francais = render_template('cours_francais.html', result=rows)
             return resultats_francais
 
         else:
