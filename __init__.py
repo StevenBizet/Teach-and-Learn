@@ -131,7 +131,7 @@ def create_app():
             return redirect("/connexion.html")
 
     @app.route("/cours_chimie", methods=["GET"])
-    def cours_francais():
+    def cours_chimie():
         if 'connexion_ok' in session:
             rows = C.execute("SELECT * FROM User")
             nv_ch = C.execute("SELECT Chimie FROM User")
