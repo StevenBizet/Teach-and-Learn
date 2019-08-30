@@ -98,7 +98,7 @@ def create_app():
     def cours_francais():
         if 'connexion_ok' in session:
             rows = C.execute("SELECT * FROM User")
-            nv_fr = int(C.execute("SELECT Francais FROM User"))
+            nv_fr = int($(C.execute("SELECT Francais FROM User")))
             if nv_fr > 0:
                 resultats_fr = render_template('/cours_francais.html', cours_francais=rows)
                 return resultats_fr
@@ -110,7 +110,7 @@ def create_app():
     def cours_maths():
         if 'connexion_ok' in session:
             rows = C.execute("SELECT * FROM User")
-            nv_mth = int(C.execute("SELECT Maths FROM User"))
+            nv_mth = int($(C.execute("SELECT Maths FROM User")))
             if nv_mth > 0:
                 resultats_mth = render_template('/cours_maths.html', cours_maths=rows)
                 return resultats_mth
@@ -122,7 +122,7 @@ def create_app():
     def cours_histoire():
         if 'connexion_ok' in session:
             rows = C.execute("SELECT * FROM User")
-            nv_his = int(C.execute("SELECT Histoire FROM User"))
+            nv_his = int($(C.execute("SELECT Histoire FROM User")))
             if nv_his > 0:
                 resultats_his = render_template('/cours_histoire.html', cours_histoire=rows)
                 return resultats_his
@@ -134,7 +134,7 @@ def create_app():
     def cours_chimie():
         if 'connexion_ok' in session:
             rows = C.execute("SELECT * FROM User")
-            nv_ch = int(C.execute("SELECT Chimie FROM User"))
+            nv_ch = int($(C.execute("SELECT Chimie FROM User")))
             if nv_ch > 0:
                 resultats_ch = render_template('/cours_chimie.html', cours_chimie=rows)
                 return resultats_ch
