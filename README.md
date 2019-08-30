@@ -18,3 +18,5 @@ LIEN COURS BRANCH GIT: https://pad.datatransition.net/w/ajc-devops
 LIEN INSTALLATION ENV DE TRAVAIL: https://pad.datatransition.net/w/ajc-devops/Environnement%20de%20travail
 
 LIEN CI-CD : https://pad.datatransition.net/w/ajc-ci-cd
+
+LIEN ANSIBLE : https://pad.datatransition.net/w/ajc-ansible
