@@ -100,8 +100,8 @@ def create_app():
             rows = C.execute("SELECT * FROM User")
             nv_fr = C.execute("SELECT Francais FROM User")
             if nv_fr > 0:
-                resultats = render_template('/cours_francais.html', cours_francais=rows)
-                return resultats
+                resultats_fr = render_template('/cours_francais.html', cours_francais=rows)
+                return resultats_fr
 
         else:
             return redirect("/connexion.html")
@@ -112,8 +112,8 @@ def create_app():
             rows = C.execute("SELECT * FROM User")
             nv_mth = C.execute("SELECT Maths FROM User")
             if nv_mth > 0:
-                resultats = render_template('/cours_maths.html', cours_maths=rows)
-                return resultats
+                resultats_mth = render_template('/cours_maths.html', cours_maths=rows)
+                return resultats_mth
 
         else:
             return redirect("/connexion.html")
@@ -124,8 +124,8 @@ def create_app():
             rows = C.execute("SELECT * FROM User")
             nv_his = C.execute("SELECT Histoire FROM User")
             if nv_his > 0:
-                resultats = render_template('/cours_histoire.html', cours_histoire=rows)
-                return resultats
+                resultats_his = render_template('/cours_histoire.html', cours_histoire=rows)
+                return resultats_his
 
         else:
             return redirect("/connexion.html")
@@ -136,8 +136,8 @@ def create_app():
             rows = C.execute("SELECT * FROM User")
             nv_ch = C.execute("SELECT Chimie FROM User")
             if nv_ch > 0:
-                resultats = render_template('/cours_chimie.html', cours_chimie=rows)
-                return resultats
+                resultats_ch = render_template('/cours_chimie.html', cours_chimie=rows)
+                return resultats_ch
 
         else:
             return redirect("/connexion.html")
