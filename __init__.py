@@ -94,6 +94,19 @@ def create_app():
         else:
             return redirect('/connexion.html')
 
+    @app.route("/cours_francais", methods=["GET"])
+    def cours_francais():
+        if 'connexion_ok' in session:
+            C.execute("SELECT * FROM User")
+            resultats = C.fetchall()
+            for resultat in resultats:
+                print(resultat)
+
+            return redirect('/')
+
+        else:
+            return redirect("/connexion.html")
+
     @app.route("/inscription", methods=["POST"])
     def inscription():
         prenom = request.form["prenom"]
