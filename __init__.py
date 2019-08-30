@@ -98,7 +98,7 @@ def create_app():
     def cours_francais():
         if 'connexion_ok' in session:
             rows = C.execute("SELECT * FROM User")
-            nv = C.execute("SELECT Francais FROM User")
+            nv_fr = C.execute("SELECT Francais FROM User")
             if nv>0:
                 resultats = render_template('/cours_francais.html', cours_francais=rows)
             return resultats
@@ -110,7 +110,7 @@ def create_app():
     def cours_maths():
         if 'connexion_ok' in session:
             rows = C.execute("SELECT * FROM User")
-            nv = C.execute("SELECT Maths FROM User")
+            nv_mth = C.execute("SELECT Maths FROM User")
             if nv>0:
                 resultats = render_template('/cours_maths.html', cours_maths=rows)
             return resultats
@@ -122,7 +122,7 @@ def create_app():
     def cours_histoire():
         if 'connexion_ok' in session:
             rows = C.execute("SELECT * FROM User")
-            nv = C.execute("SELECT Histoire FROM User")
+            nv_his = C.execute("SELECT Histoire FROM User")
             if nv>0:
                 resultats = render_template('/cours_histoire.html', cours_histoire=rows)
             return resultats
@@ -134,7 +134,7 @@ def create_app():
     def cours_francais():
         if 'connexion_ok' in session:
             rows = C.execute("SELECT * FROM User")
-            nv = C.execute("SELECT Chimie FROM User")
+            nv_ch = C.execute("SELECT Chimie FROM User")
             if nv>0:
                 resultats = render_template('/cours_chimie.html', cours_chimie=rows)
             return resultats
