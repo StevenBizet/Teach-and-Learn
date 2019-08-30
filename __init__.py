@@ -98,7 +98,7 @@ def create_app():
     def cours_francais():
         if 'connexion_ok' in session:
             rows = C.execute("SELECT * FROM User")
-            resultats = render_template('/template/cours_francais.html', cours_francais=rows)
+            resultats = render_template('/templates/cours_francais.html', cours_francais=rows)
             return resultats
 
         else:
