@@ -97,7 +97,7 @@ def create_app():
     @app.route("/cours_francais", methods=["GET"])
     def cours_francais():
         if 'connexion_ok' in session:
-	    C.execute("SELECT * FROM User")
+            C.execute("SELECT * FROM User")
             resultats = C.fetchall()
             for resultat in resultats:
                 print(resultat)
