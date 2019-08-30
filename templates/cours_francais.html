@@ -6,7 +6,8 @@
     <ul>
       {% for row in cours_francais %}
       <li>
-        {{ row[1], row[2], row[3], row[6], row[8] }}
+	      <!--0 id, 1 nom, 2 prenom, 3 pseudo, 4 mdp, 5 email, 6 tel, 7 nv maths, 8 nv fancais, 9 nv histoire, 10 nv chimiei-->
+        {{ row[1], row[2], row[5], row[6], row[8] }}
       </li>
       {% endfor %}
     </ul>
