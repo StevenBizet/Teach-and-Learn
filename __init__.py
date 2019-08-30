@@ -10,38 +10,17 @@ C = CONN.cursor()
 C.execute("""
     CREATE TABLE IF NOT EXISTS User (
         idUser INTEGER PRIMARY KEY AUTOINCREMENT, 
-        User_name VARCHAR(45) NOT NULL, 
-        User_surname VARCHAR(45) NOT NULL, 
-        User_pseudo VARCHAR(45) NOT NULL, 
+        User_name VARCHAR(20) NOT NULL, 
+        User_surname VARCHAR(20) NOT NULL, 
+        User_pseudo VARCHAR(20) NOT NULL, 
         User_password VARCHAR(20) NOT NULL, 
-        User_email VARCHAR(20) NULL, 
-        User_phone VARCHAR(20) NULL)
+        User_email VARCHAR(20) NOT NULL, 
+        User_phone VARCHAR(20) NOT NULL,
+        Maths INTEGER NOT NULL,
+        Francais INTEGER NOT NULL,
+        Histoire INTEGER NOT NULL,
+        Chimie INTEGER NOT NULL)
     """)
-
-C.execute("""
-    CREATE TABLE IF NOT EXISTS Location (
-        idLocation INTEGER PRIMARY KEY AUTOINCREMENT,
-        city VARCHAR(45) NOT NULL,
-        adress VARCHAR(45) NOT NULL,
-        idUser INT NOT NULL,
-        FOREIGN KEY (idUser) 
-        REFERENCES User (idUser))
-    """)
-
-#        INDEX `idUser_idx` (`idUser` ASC) VISIBLE,
-#        CONSTRAINT `idUser`
-#            FOREIGN KEY (`idUser`)
-#            REFERENCES `best_project`.`User` (`idUser`)
-#    )
-
-#    CREATE TABLE IF NOT EXISTS `best_project`.`Cours` (
-#        `idCours` INT NOT NULL AUTO_INCREMENT,
-#        `IndiceCours` VARCHAR(2) NOT NULL,
-#        PRIMARY KEY (`idCours`),
-#        INDEX () VISIBLE,
-#        UNIQUE INDEX `idCours_UNIQUE` (`idCours` ASC) VISIBLE
-#    )
-
 
 def create_app():
     """ On créer notre fonction pour l'appeler dans server.py"""
@@ -61,6 +40,7 @@ def create_app():
             return redirect('/')
         else:
             return redirect('/connexion.html')
+
 
     @app.route("/verif_co", methods=["POST"])
     def verif_co():
@@ -99,6 +79,46 @@ def create_app():
         else:
             return redirect('/connexion.html')
 
+    @app.route("/cours_francais", methods=["GET"])
+    def cours_francais():
+        if 'connexion_ok' in session:
+            rows = C.execute("SELECT * FROM User WHERE Francais > 0")
+            resultats_fr = render_template('/cours_francais.html', cours_francais=rows)
+            return resultats_fr
+
+        else:
+            return redirect("/connexion.html")
+
+    @app.route("/cours_maths", methods=["GET"])
+    def cours_maths():
+        if 'connexion_ok' in session:
+            rows = C.execute("SELECT * FROM User WHERE Maths > 0")
+            resultats_mth = render_template('/cours_maths.html', cours_maths=rows)
+            return resultats_mth
+
+        else:
+            return redirect("/connexion.html")
+
+    @app.route("/cours_histoire", methods=["GET"])
+    def cours_histoire():
+        if 'connexion_ok' in session:
+            rows = C.execute("SELECT * FROM User WHERE Histoire > 0")
+            resultats_his = render_template('/cours_histoire.html', cours_histoire=rows)
+            return resultats_his
+
+        else:
+            return redirect("/connexion.html")
+
+    @app.route("/cours_chimie", methods=["GET"])
+    def cours_chimie():
+        if 'connexion_ok' in session:
+            rows = C.execute("SELECT * FROM User WHERE Chimie > 0")
+            resultats_ch = render_template('/cours_chimie.html', cours_chimie=rows)
+            return resultats_ch
+
+        else:
+            return redirect("/connexion.html")
+
     @app.route("/inscription", methods=["POST"])
     def inscription():
         prenom = request.form["prenom"]
@@ -108,15 +128,18 @@ def create_app():
         mdp = request.form["mdp"]
         email = request.form["email"]
 #        date = request.form["date"]
+        math = request.form["niveau_maths"]
+        francais = request.form["niveau_francais"]
+        histoire = request.form["niveau_histoire"]
+        chimie = request.form["niveau_chimie"]
 
         C.execute("INSERT INTO User \
-                (User_name, User_surname, User_pseudo, User_password, User_email, User_phone) \
-                VALUES (?, ?, ?, ?, ?, ?)", (nom, prenom, pseudo, mdp, email, tel))
+                (User_name, User_surname, User_pseudo, User_password, User_email, User_phone, Maths, \
+                Francais, Histoire, Chimie) \
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", \
+                (nom, prenom, pseudo, mdp, email, tel, math, francais, histoire, chimie))
         CONN.commit()
 
-        flash("Vous etes {} {} (alias {}), votre mot de passe est {}, \
-                votre mail est {} et votre numéro de téléphone est {}"\
-                .format(prenom, nom, pseudo, mdp, email, tel))
         return redirect('/page_accueil.html')
 
     return app

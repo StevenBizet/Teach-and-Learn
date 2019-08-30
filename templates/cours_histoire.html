@@ -1,0 +1,16 @@
+<!doctype>
+<html>
+  </head>
+  <body>
+    <ul>
+      {% for row in cours_histoire %}
+      <li>
+              <!--0 id, 1 nom, 2 prenom, 3 pseudo, 4 mdp, 5 email, 6 tel, 7 nv m
+aths, 8 nv fancais, 9 nv histoire, 10 nv chimiei-->
+        {{ row[1], row[2], row[5], row[6], row[9] }}
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
+
