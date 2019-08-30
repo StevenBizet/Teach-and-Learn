@@ -19,4 +19,4 @@ LIEN INSTALLATION ENV DE TRAVAIL: https://pad.datatransition.net/w/ajc-devops/En
 
 LIEN CI-CD : https://pad.datatransition.net/w/ajc-ci-cd
 
-LIEN ANSIBLE : https://pad.datatransition.net/w/ajc-ansible
+LIEN ANSIBLE : https://pad.datatransition.net/w/ajc-ansible ET https://github.com/glenux/teaching-devops-ansible-demo
