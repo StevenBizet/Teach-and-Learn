@@ -79,10 +79,11 @@ def create_app():
         else:
             return redirect('/connexion.html')
 
-    @app.route("/cours_francais", methods=["GET"])
+    @app.route("/cours_francais", methods=["GET", "POST"])
     def cours_francais():
+        nv_francais=request.form["niveau_cours_francais"]
         if 'connexion_ok' in session:
-            rows = C.execute("SELECT * FROM User WHERE Francais > 0")
+            rows = C.execute("SELECT * FROM User WHERE Francais >= nv_francais")
             resultats_fr = render_template('/cours_francais.html', cours_francais=rows)
             return resultats_fr
 
@@ -91,8 +92,9 @@ def create_app():
 
     @app.route("/cours_maths", methods=["GET"])
     def cours_maths():
+        nv_maths=request.form["niveau_cours_maths"]
         if 'connexion_ok' in session:
-            rows = C.execute("SELECT * FROM User WHERE Maths > 0")
+            rows = C.execute("SELECT * FROM User WHERE Maths > niveau_cours_maths")
             resultats_mth = render_template('/cours_maths.html', cours_maths=rows)
             return resultats_mth
 
@@ -101,8 +103,9 @@ def create_app():
 
     @app.route("/cours_histoire", methods=["GET"])
     def cours_histoire():
+        nv_histoire=request.form["niveau_cours_histoire"]
         if 'connexion_ok' in session:
-            rows = C.execute("SELECT * FROM User WHERE Histoire > 0")
+            rows = C.execute("SELECT * FROM User WHERE Histoire > nv_histoire")
             resultats_his = render_template('/cours_histoire.html', cours_histoire=rows)
             return resultats_his
 
@@ -111,8 +114,9 @@ def create_app():
 
     @app.route("/cours_chimie", methods=["GET"])
     def cours_chimie():
+        nv_chimie=request.form["niveau_cours_chimie"]
         if 'connexion_ok' in session:
-            rows = C.execute("SELECT * FROM User WHERE Chimie > 0")
+            rows = C.execute("SELECT * FROM User WHERE Chimie > niveau_chimie")
             resultats_ch = render_template('/cours_chimie.html', cours_chimie=rows)
             return resultats_ch
 
