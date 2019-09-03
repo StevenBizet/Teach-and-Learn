@@ -245,22 +245,20 @@ footer {
     bottom: 0;
     height: 100px;
     margin-top: 50px;
-    margin-left: 0px;
-    margin-right: 0px;
-    
+        
 }
 
 .partie1{
     background-color: white;
-    padding: auto;
-    margin: auto;
+    padding:0px;
+    margin: 0px;
 }
 
 
 .partie2{
     background-color: #1abc9c;
-    padding: auto;
-    margin: auto;
+    padding: 0px;
+    margin: 0px;
     
 }
 
