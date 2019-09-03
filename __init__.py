@@ -95,6 +95,7 @@ def create_app():
     def cours_maths():
         nv_maths = request.form["niveau_cours_maths"]
         if 'connexion_ok' in session:
+            print(nv_maths)
             rows = C.execute("SELECT * FROM User WHERE Maths > 'nv_maths'")
             resultats_mth = render_template('/cours_maths.html', cours_maths=rows)
             return resultats_mth
