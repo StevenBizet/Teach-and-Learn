@@ -2,7 +2,7 @@
 
 """Mon docstring"""
 import sqlite3
-from flask import Flask, request, redirect, render_template, session, flash, url_for
+from flask import Flask, Blueprint, request, redirect, render_template, session, flash, url_for
 
 CONN = sqlite3.connect('best_project.db', check_same_thread=False) #pabien
 C = CONN.cursor()
