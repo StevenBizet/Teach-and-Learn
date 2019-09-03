@@ -42,12 +42,13 @@ def create_app():
             return redirect('/connexion.html')
 
 
-    @app.route("/verif_co", methods=["POST"])
+    @app.route("/verif_co", methods=["GET", "POST"])
     def verif_co():
         C.execute("""SELECT idUser, User_pseudo, User_password FROM User""")
         pseudo = request.form["pseudo"]
         mdp = request.form["mdp"]
-        print("test")
+        print(pseudo)
+        print(row[1])
         for row in C:
             if row[1] == pseudo:
                 if row[2] == mdp:
