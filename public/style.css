@@ -175,7 +175,7 @@ li a:hover {
 
 /* bouton envoyer */
 
-.button{
+/*.button{
     cursor: pointer;
     border-style: solid;
     background-color:black;
@@ -184,7 +184,7 @@ li a:hover {
     padding: 0px 15px;
     position: relative;
     height: 40px;
-}
+} */
 
         
 .button:hover{
@@ -242,7 +242,6 @@ button:hover {
 /* Footer - Bas de page */
 
 footer {
-    position: absolute;
     bottom: 0;
     height: 100px;
     margin-top: 50px;
