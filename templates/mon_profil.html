@@ -26,14 +26,21 @@
     </br>
 
     <h1 style="text-align:center">Mon profil</h1>
-      <div class="card">
-        <img src="img_avatar1.png" alt="John" style="width:100%">
-        <h1>PRENOM NOM</h1>
-        <p> Téléphone </p>
-        <p> Pseudo</p>
-        <p> Mot de passe</p>
-        <p> Email </p>
-        <p> Date de naissance</p>
+      <ul>
+	      <!--        <img src="img_avatar1.png" alt="John" style="width:100%"> -->
+	{% for row in mon_profil %} 
+	<li><h1>PRENOM NOM</h1></li> 
+	<li> {{ row[1] }} {{ row[2] }}</li>
+        <li> Téléphone </li>
+	<li> {{ row[6] }} </li>
+        <li> Pseudo</li>
+	<li> {{ row[3] }} </li>
+        <li> Mot de passe</li>
+	<li> {{ row[4] }} </li>
+        <li> Email </li>
+	<li> {{ row[5] }} </li>
+        <li> Date de naissance</li>
+	{% endfor %}
             
         </br>
 
@@ -45,7 +52,7 @@
 
         <h2> Ma description </h2>
 
-      </div>
+      </ul>
      <!-- Fin -->
 
     <footer>
