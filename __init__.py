@@ -48,8 +48,8 @@ def create_app():
         pseudo = request.form["pseudo"]
         mdp = request.form["mdp"]
         print(pseudo)
-        print(row[1])
         for row in C:
+            print(row[1])
             if row[1] == pseudo:
                 if row[2] == mdp:
                     id_user = row[0]
