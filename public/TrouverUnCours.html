@@ -99,7 +99,7 @@
 
     <a class="col-md-4" align="center"  onclick="container_nv_chimie.style.visibility='visible'"><img src="chimie.png" alt="chimie" width="100"/>Chimie</a>
     <div id="container_nv_chimie" style="visibility:hidden"><label for="niveau_cours_chimie">Quel niveau souhaitez vous?</label>
-        <form id="nv_chimie" method="post" action="/cours_chime">
+        <form id="nv_chimie" method="post" action="/cours_chimie">
         	<select name="niveau_cours_chimie" id="niveau_cours_chimie">
                 	<option value=0>L1</option>
                 	<option value=1>L2</option>
@@ -124,6 +124,7 @@
                 	<option value=4>M2</option>
                 	<option value=5>plus que M2</option>
         	</select>
+		<input class="button" type="submit" name="boutton_philo" value="OK"/>
 	<form/>
     </div>
 
@@ -140,6 +141,7 @@
                 	<option value=4>M2</option>
                 	<option value=5>plus que M2</option>
         	</select>
+		<input class="button" type="submit" name="boutton_histoire" value="OK"/>
 	</form>
     </div>
 
