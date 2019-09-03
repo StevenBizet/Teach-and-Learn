@@ -90,7 +90,7 @@ def create_app():
         else:
             return redirect("/connexion.html")
 
-    @app.route("/cours_maths", methods=["GET"])
+    @app.route("/cours_maths", methods=["GET", "POST"])
     def cours_maths():
         nv_maths = request.form["niveau_cours_maths"]
         if 'connexion_ok' in session:
@@ -101,7 +101,7 @@ def create_app():
         else:
             return redirect("/connexion.html")
 
-    @app.route("/cours_histoire", methods=["GET"])
+    @app.route("/cours_histoire", methods=["GET", "POST"])
     def cours_histoire():
         nv_histoire = request.form["niveau_cours_histoire"]
         if 'connexion_ok' in session:
@@ -112,7 +112,7 @@ def create_app():
         else:
             return redirect("/connexion.html")
 
-    @app.route("/cours_chimie", methods=["GET"])
+    @app.route("/cours_chimie", methods=["GET", "POST"])
     def cours_chimie():
         nv_chimie = request.form["niveau_cours_chimie"]
         if 'connexion_ok' in session:
