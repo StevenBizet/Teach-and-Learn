@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
   end
 
   # Mettre en place un cache pour APT
-  config.vm.synced_folder './', '/vagrant', type: 'virtualbox'
+  config.vm.synced_folder './', '/home/vagrant/Teach-and-Learn', type: 'virtualbox'
  
   config.vm.define 'workstation' do |machine|
     machine.vm.hostname = 'workstation'
