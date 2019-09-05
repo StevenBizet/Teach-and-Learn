@@ -66,16 +66,11 @@ def create_app():
     @app.route("/mon_profil", methods=["GET"])
     def mon_profil_co():
         if 'connexion_ok' in session:
-            # n_utilisateur = session['connexion_ok']
-            # print(n_utilisateur)
-            n_utilisateur = 1
+            n_utilisateur = session['connexion_ok']            
             query_string = "SELECT * FROM User WHERE idUser = ?"
             rows = C.execute(query_string, (n_utilisateur,))
             rv = rows.fetchall()
-            print(rv)
-            # rows = C.execute("SELECT * FROM User WHERE idUser = '%s'", n_utilisateur)
-            print(rows)
-            info = render_template('/mon_profil.html', mon_profil=rows)
+            info = render_template('/mon_profil.html', mon_profil=rv)
             return info
 
         else:

@@ -27,20 +27,23 @@
 
     <h1 style="text-align:center">Mon profil</h1>
       <ul>
-	      <!--        <img src="img_avatar1.png" alt="John" style="width:100%"> -->
-	{% for row in mon_profil %} 
-	<li><h1>PRENOM NOM</h1></li> 
-	<li> {{ row[1] }} {{ row[2] }}</li>
-        <li> Téléphone </li>
-	<li> {{ row[6] }} </li>
-        <li> Pseudo</li>
-	<li> {{ row[3] }} </li>
-        <li> Mot de passe</li>
-	<li> {{ row[4] }} </li>
-        <li> Email </li>
-	<li> {{ row[5] }} </li>
-        <li> Date de naissance</li>
-	{% endfor %}
+	<img src="img_avatar1.png" alt="John" style="width:100%">
+	<li><h1>PRENOM NOM</h1></li>
+	<li> {{mon_profil[0][1]}}, {{mon_profil[0][2]}}</li>
+	</br>
+	<li> Téléphone </li>
+	<li> {{mon_profil[0][6]}} </li>
+	</br>
+	<li> Pseudo</li>
+	<li> {{mon_profil[0][3]}} </li>
+	</br>
+	<li> Mot de passe</li>
+	<li> {{mon_profil[0][4]}} </li>
+	</br>
+	<li> Email </li>
+	<li> {{mon_profil[0][5]}} </li>
+	<!-- <li> Date de naissance</li> -->	
+
             
         </br>
 
