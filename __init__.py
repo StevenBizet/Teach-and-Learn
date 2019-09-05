@@ -2,7 +2,7 @@
 
 """Mon docstring"""
 import sqlite3
-from flask import Flask, Blueprint, request, redirect, render_template, session, flash, url_for
+from flask import Flask, request, redirect, render_template, session, flash, url_for
 
 CONN = sqlite3.connect('best_project.db', check_same_thread=False) #pabien
 C = CONN.cursor()
@@ -42,13 +42,14 @@ def create_app():
             return redirect('/connexion.html')
 
 
-    @app.route("/verif_co", methods=["POST"])
+    @app.route("/verif_co", methods=["GET", "POST"])
     def verif_co():
         C.execute("""SELECT idUser, User_pseudo, User_password FROM User""")
         pseudo = request.form["pseudo"]
         mdp = request.form["mdp"]
-        print("test")
+        print(pseudo)
         for row in C:
+            print(row[1])
             if row[1] == pseudo:
                 if row[2] == mdp:
                     id_user = row[0]
@@ -58,10 +59,9 @@ def create_app():
                     return redirect('/')
                 else:
                     print("mdp incorrect")
-                    return redirect('/connexion.html')
             else:
                 print("pseudo incorrect")
-                return redirect('/connexion.html')
+        return redirect('/connexion.html')
 
     @app.route("/mon_profil")
     def mon_profil_co():
@@ -79,40 +79,45 @@ def create_app():
         else:
             return redirect('/connexion.html')
 
-    @app.route("/cours_francais", methods=["GET"])
+    @app.route("/cours_francais", methods=["GET", "POST"])
     def cours_francais():
+        nv_francais = request.form["niveau_cours_francais"]
         if 'connexion_ok' in session:
-            rows = C.execute("SELECT * FROM User WHERE Francais > 0")
+            rows = C.execute("SELECT * FROM User WHERE Francais > " + nv_francais)
             resultats_fr = render_template('/cours_francais.html', cours_francais=rows)
             return resultats_fr
 
         else:
             return redirect("/connexion.html")
 
-    @app.route("/cours_maths", methods=["GET"])
+    @app.route("/cours_maths", methods=["GET", "POST"])
     def cours_maths():
+        nv_maths = request.form["niveau_cours_maths"]
         if 'connexion_ok' in session:
-            rows = C.execute("SELECT * FROM User WHERE Maths > 0")
+            print(nv_maths)
+            rows = C.execute("SELECT * FROM User WHERE Maths > " + nv_maths)
             resultats_mth = render_template('/cours_maths.html', cours_maths=rows)
             return resultats_mth
 
         else:
             return redirect("/connexion.html")
 
-    @app.route("/cours_histoire", methods=["GET"])
+    @app.route("/cours_histoire", methods=["GET", "POST"])
     def cours_histoire():
+        nv_histoire = request.form["niveau_cours_histoire"]
         if 'connexion_ok' in session:
-            rows = C.execute("SELECT * FROM User WHERE Histoire > 0")
+            rows = C.execute("SELECT * FROM User WHERE Histoire > " + nv_histoire)
             resultats_his = render_template('/cours_histoire.html', cours_histoire=rows)
             return resultats_his
 
         else:
             return redirect("/connexion.html")
 
-    @app.route("/cours_chimie", methods=["GET"])
+    @app.route("/cours_chimie", methods=["GET", "POST"])
     def cours_chimie():
+        nv_chimie = request.form["niveau_cours_chimie"]
         if 'connexion_ok' in session:
-            rows = C.execute("SELECT * FROM User WHERE Chimie > 0")
+            rows = C.execute("SELECT * FROM User WHERE Chimie > " + nv_chimie)
             resultats_ch = render_template('/cours_chimie.html', cours_chimie=rows)
             return resultats_ch
 
