@@ -3,20 +3,13 @@
 
 <html>
   <head>
-      {% block head %} {% endblock %}
-      <title>Teach and Learn - Trouver un cours de maths</title>
+      <link href="style.css" rel="stylesheet" media="all" type="text/css"> 
+      <meta charset="utf-8">
+      <title>Teach and Learn - Trouver un cours de mathématiques</title>
   </head>
 
   <body>
-      <header class=uppercase > <!--rajouter les links pour chaque item -->
-        <ul>
-            <li> <a  href="page_accueil_V2.html">Accueil</a> </li>
-            <li> <a  href="TrouverUnCours.html">Trouver un cours</a> </li>
-            <li> <a  href="mon_profil_V2.html">Mon profil</a> </li>
-            <li> <a class="connection" href="connexion_V2.html" type="button" value="Connection">Se connecter</a></li>
-            <li> <a class="inscription"  href="formulaire_V2.html"> S'inscrire</a> </li>
-        </ul>
-    </header>
+    {{ include 'header.html'}}
     <h1> Trouvez votre tuteur de mathématiques: </h1>
     <ul>
       {% for row in cours_maths %}
