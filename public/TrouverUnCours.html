@@ -34,15 +34,116 @@
       <h1 align="center">Choisissez votre matière</h1>
     </div>
     <div class="col-md-12" style="visibility:hidden;">encore cache cache :D</div>
-    <a class="col-md-4" align="center" href="/cours_francais"><img src="francais2.png" alt="francais" width="70"/>Français</a>
-    <a class="col-md-4" align="center" href="anglais.html"><img src="anglais2.jpg" alt="anglais" width="70"/>Anglais</a>
-    <a class="col-md-4" align="center" href="/cours_maths"><img src="maths2.png" alt="maths" width="100"/>Mathématiques</a>
+
+    <a class="col-md-4" align="center" onclick="container_nv_francais.style.visibility='visible'"><img src="francais2.png" alt="francais" width="70"/>Français</a>
+    <div id="container_nv_francais" style="visibility:hidden"><label for="niveau_cours_francais">Quel niveau souhaitez vous?</label>
+	<form id="nv_francais" method="post" action="/cours_francais">
+    		<select name="niveau_cours_francais" id="niveau_cours_francais">
+        		<option value=0>L1</option>
+                	<option value=1>L2</option>
+                	<option value=2>L3</option>
+                	<option value=3>M1</option>
+                	<option value=4>M2</option>
+                	<option value=5>plus que M2</option>
+		</select>
+		<input class="button" type="submit" name="boutton_francais" value="OK"/> 
+	</form>
+    </div>
+
+    <a class="col-md-4" align="center" onclick="container_nv_anglais.style.visibility='visible'"><img src="anglais2.jpg" alt="anglais" width="70"/>Anglais</a>
+    <div id="container_nv_anglais" style="visibility:hidden"><label for="niveau_cours_anglais">Quel niveau souhaitez vous?</label>
+	<form id="nv_anglais" method="post" action="/cours_anglais">
+        	<select name="niveau_cours_anglais" id="niveau_cours_anglais">
+                	<option value=0>L1</option>
+                	<option value=1>L2</option>
+                	<option value=2>L3</option>
+                	<option value=3>M1</option>
+                	<option value=4>M2</option>
+                	<option value=5>plus que M2</option>
+        	</select>
+		<input class="button" type="submit" name="boutton_anglais" value="OK"/>
+	</form>
+    </div>
+
+    <a class="col-md-4" align="center"  onclick="container_nv_maths.style.visibility='visible'"><img src="maths2.png" alt="maths" width="100"/>Mathématiques</a>
+    <div id="container_nv_maths" style="visibility:hidden"><label for="niveau_cours_maths">Quel niveau souhaitez vous?</label>
+	<form id="nv_maths" method="post" action="/cours_maths">
+    		<select name="niveau_cours_maths" id="niveau_cours_maths">
+                	<option value=0>L1</option>
+                	<option value=1>L2</option>
+                	<option value=2>L3</option>
+                	<option value=3>M1</option>
+                	<option value=4>M2</option>
+                	<option value=5>plus que M2</option>
+        	</select>
+		<input class="button" type="submit" name="boutton_maths" value="OK"/>
+	</form>
+    </div>
+
     <div class="col-md-12" style="visibility:hidden;">hihihi</div>
-    <a class="col-md-4" align="center" href="physique.html"><img src="physique2.jpg" alt="physique" width="100"/>Physique</a>
-    <a class="col-md-4" align="center" href="/cours_chimie"><img src="chimie.png" alt="chimie" width="100"/>Chimie</a>
-    <a class="col-md-4" align="center" href="philosophie.html"><img src="philosophie.png" alt="philosophie" width="100"/>Philosophie</a>
+
+    <a class="col-md-4" align="center" onclick="container_nv_physique.style.visibility='visible'"><img src="physique2.jpg" alt="physique" width="100"/>Physique</a>
+    <div id="container_nv_physique" style="visibility:hidden"><label for="niveau_cours_physique">Quel niveau souhaitez vous?</label>
+        <form id="nv_physique" method="post" action="/cours_physique">
+    		<select name="niveau_cours_physique" id="niveau_cours_physique">
+                	<option value=0>L1</option>
+                	<option value=1>L2</option>
+                	<option value=2>L3</option>
+                	<option value=3>M1</option>
+                	<option value=4>M2</option>
+                	<option value=5>plus que M2</option>
+        	</select>
+		<input class="button" type="submit" name="boutton_physique" value="OK"/>
+	</form>
+    </div>
+
+    <a class="col-md-4" align="center"  onclick="container_nv_chimie.style.visibility='visible'"><img src="chimie.png" alt="chimie" width="100"/>Chimie</a>
+    <div id="container_nv_chimie" style="visibility:hidden"><label for="niveau_cours_chimie">Quel niveau souhaitez vous?</label>
+        <form id="nv_chimie" method="post" action="/cours_chimie">
+        	<select name="niveau_cours_chimie" id="niveau_cours_chimie">
+                	<option value=0>L1</option>
+                	<option value=1>L2</option>
+                	<option value=2>L3</option>
+                	<option value=3>M1</option>
+                	<option value=4>M2</option>
+                	<option value=5>plus que M2</option>
+        	</select>
+		<input class="button" type="submit" name="boutton_chimie" value="OK"/>
+	</form>
+    </div>
+
+
+    <a class="col-md-4" align="center"  onclick="container_nv_philo.style.visibility='visible'"><img src="philosophie.png" alt="philosophie" width="100"/>Philosophie</a>
+    <div id="container_nv_philo" style="visibility:hidden"><label for="niveau_cours_philo">Quel niveau souhaitez vous?</label>
+        <form id="nv_philo" method="post" action="/cours_philo">
+    		<select name="niveau_cours_philo" id="niveau_cours_philo">
+                	<option value=0>L1</option>
+                	<option value=1>L2</option>
+                	<option value=2>L3</option>
+                	<option value=3>M1</option>
+                	<option value=4>M2</option>
+                	<option value=5>plus que M2</option>
+        	</select>
+		<input class="button" type="submit" name="boutton_philo" value="OK"/>
+	<form/>
+    </div>
+
     <div class="col-md-12" style="visibility:hidden;">¯\_༼ ಥ ‿ ಥ ༽_/¯</div>
-    <a class="col-md-4" align="center" href="/cours_histoire"><img src="histoire.png" alt="histoire" width="100"/>Histoire</a>
+
+    <a class="col-md-4" align="center"  onclick="container_nv_histoire.style.visibility='visible'"><img src="histoire.png" alt="histoire" width="100"/>Histoire</a>
+    <div id="container_nv_histoire" style="visibility:hidden"><label for="niveau_cours_histoire">Quel niveau souhaitez vous?</label>
+	<form id="nv_histoire" method="post" action="/cours_histoire">
+        	<select name="niveau_cours_histoire" id="niveau_cours_histoire">
+                	<option value=0>L1</option>
+                	<option value=1>L2</option>
+                	<option value=2>L3</option>
+                	<option value=3>M1</option>
+                	<option value=4>M2</option>
+                	<option value=5>plus que M2</option>
+        	</select>
+		<input class="button" type="submit" name="boutton_histoire" value="OK"/>
+	</form>
+    </div>
 
   </div>
   <br/>

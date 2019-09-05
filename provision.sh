@@ -9,8 +9,16 @@ apt-get update
 apt-get install -y \
     apt-transport-https \
     ca-certificates \
+    git \
     curl \
+    wget \
+    vim \
     gnupg2 \
+    python3 \
+    python3-apt \
+    python-apt \
+    python-setuptools \
+    python-pip \
     software-properties-common
 
 # Add Docker’s official GPG key:

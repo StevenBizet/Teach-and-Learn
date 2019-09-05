@@ -1,16 +1,81 @@
-<!doctype>
+<!DOCTYPE html>
+<html lang="fr">
+
 <html>
+  <head>
+      <link href="style.css" rel="stylesheet" media="all" type="text/css"> 
+      <meta charset="utf-8">
+      <title>Teach and Learn - Trouver un cours de chimie</title>
   </head>
+
   <body>
+    <header class=uppercase > <!--rajouter les links pour chaque item -->
+      <ul>
+        <li> <a  href="page_accueil_V2.html">Accueil</a> </li>
+        <li> <a  href="TrouverUnCours.html">Trouver un cours</a> </li>
+        <li> <a  href="mon_profil_V2.html">Mon profil</a> </li>
+        <li> <a class="connection" href="connexion_V2.html" type="button" value="Connection">Se connecter</a></li>
+        <li> <a class="inscription"  href="formulaire_V2.html"> S'inscrire</a> </li>
+      </ul>
+    </header>
+    <h1> Trouvez votre tuteur de chimie: </h1>
     <ul>
       {% for row in cours_chimie %}
       <li>
               <!--0 id, 1 nom, 2 prenom, 3 pseudo, 4 mdp, 5 email, 6 tel, 7 nv m
-aths, 8 nv fancais, 9 nv histoire, 10 nv chimie-->
-        {{ row[1], row[2], row[5], row[6], row[10] }}
-      </li>
+aths, 8 nv fancais, 9 nv histoire, 10 nv maths-->
+        <!-- {{ row[1], row[2], row[5], row[6], row[7] }} -->
+
+      <div class="card">
+          <img src="imageprof.jpg" alt="{{ row[3] }}" style="width:100%">
+          <h1>{{ row[1] }} {{ row[2] }}</h1>
+          <p class="title">Niveau en chimie : {{ row[10] }}</p>
+          <p>Tel : {{ row[6] }}</p>
+          <p>Email : {{ row[5] }}</p>
+          <div style="margin: 24px 0;">
+            <a href="#"><i class="fa fa-dribbble"></i></a> 
+            <a href="#"><i class="fa fa-twitter"></i></a>  
+            <a href="#"><i class="fa fa-linkedin"></i></a>  
+            <a href="#"><i class="fa fa-facebook"></i></a> 
+          </div>
+	</div>
+	</li>
       {% endfor %}
     </ul>
+    <footer>
+        <div class="partie1">
+          <div >
+            <h5>Assistance</h5>
+            <div>
+              <p>Besoin d'aide ?</p>
+              <a href="mailto:b-stev@hotmail.fr">b-stev@hotmail.fr</a>
+            </div>
+          </div>
+          <div >
+            <h5>Contacts</h5>
+            <div>
+              <p> AJC Formation </p>
+              <p> 6 Rue Rougemont, 75009 Paris</p>
+            </div>
+          </div>
+          <div >
+            <h5>Nos Réseaux Sociaux</h5>
+            <div>
+              <a href="A renseigner">Facebook</a>
+              <a href="A renseigner">Twitter</a>
+              <a href="A renseigner">Youtube</a>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <br/>
+        <div class="partie2">
+          <div ></div>
+            <a  href="javascript:void(0);" data-url="A renseigner">Conditions Générales d'Utilisation</a>
+            <a  href="javascript:void(0);" data-url="A renseigner">Politique de confidentialité</a>
+            <a  href="javascript:void(0);" data-url="A renseigner">Politique de cookies</a>
+          </div>
+        </div>
+      </footer>
   </body>
 </html>
-
